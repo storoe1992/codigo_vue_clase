@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
+    <input v-model="edad" type="text">
+    <button @click="ingresarEdad()">Agregar Edad</button>
     <HelloWorld :arreglo="miarreglo"/>
   </div>
 </template>
@@ -12,11 +14,19 @@ export default {
   name: 'App',
   data() {
     return {
-      miarreglo: [{edad:31},{edad:36},{edad:30}]
+      miarreglo: [{edad:31},{edad:36},{edad:30}],
+      edad: "",
     }
   },
   components: {
     HelloWorld,
+  },
+  methods: {
+    ingresarEdad() {
+      if(this.edad == "") return
+      this.miarreglo.push({edad: this.edad})
+      this.edad = ""
+    }
   },
 }
 </script>
